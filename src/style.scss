@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+$font-family: "Open Sans", sans-serif;
+$bg-image: url("./assets/bg.jpg");
+$primary-header: #ffffff;
+$subtext: #d3d3d3;
+$form-pane: #f2f2f2;
+$form-blue: #348fbc;
+$disabled: #909090;
+$selected-option: #212121;
+$blue: #348fbc;
+$disabled-background: #e0e0e0; /* Light gray for disabled background */
+
+body {
+  margin: 0;
+  font-family: $font-family;
+  background: $primary-header;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: $bg-image;
+  background-size: cover;
+  background-position: center;
+  color: $primary-header;
+  text-align: center;
+
+  .hero {
+    margin-bottom: 2rem;
+    width: 100%;
+    max-width: 800px;
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: $primary-header;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      color: $subtext;
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+      text-align: center;
+    }
+  }
+}
+
+.dropdown-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $form-pane;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  .dropdown-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem;
+
+    .make-border {
+      border-right: 1px solid $disabled;
+      border-left: 1px solid $disabled;
+      padding: 20px;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+      position: relative;
+
+      h2 {
+        font-size: 1.5rem;
+        color: $blue;
+        padding: 5px;
+      }
+
+      select {
+        padding: 0.5rem;
+        font-size: 1rem;
+        border: 1px solid $form-blue;
+        border-radius: 4px;
+        background-color: $form-pane;
+        color: $selected-option;
+        cursor: pointer;
+        appearance: none; /* Removes default styling */
+        width: 200px; /* Adjust width to suit your design */
+
+        &:disabled {
+          background-color: $disabled;
+          cursor: not-allowed;
+        }
+
+        option {
+          padding: 10px; /* Add padding inside the options */
+          font-size: 1rem; /* Adjust font size for the options */
+        }
+      }
+
+      /* Styling for the disabled state when "Year" is not selected */
+      &.disabled {
+        background-color: $disabled-background; /* Light gray background */
+        pointer-events: none; /* Disable interactions */
+        opacity: 0.5; /* Reduce opacity to show it’s inactive */
+      }
+    }
+  }
+}
